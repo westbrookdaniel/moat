@@ -11,7 +11,7 @@ function formatBytes(bytes: number, decimals = 2) {
 }
 
 export async function buildClient() {
-  const entrypoints = Array.from(clientEntryMap.values()).map((file) =>
+  const entrypoints = Array.from(clientEntryMap.keys()).map((file) =>
     path.join(process.cwd(), file),
   );
 

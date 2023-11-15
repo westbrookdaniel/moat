@@ -16,8 +16,6 @@ export const clientEntryMap = new Map();
  * register(MyComponent, './MyComponent.tsx');
  */
 export function register(Component: ComponentType, filepath: string) {
-  const id = Math.random().toString(36).slice(2);
-
   const src = path.join("/_client", filepath);
   const p = src.replace(/\.(ts|tsx|jsx)$/, ".js");
 
@@ -26,7 +24,7 @@ export function register(Component: ComponentType, filepath: string) {
     Component;
     p;
   } else {
-    clientEntryMap.set(id, filepath);
+    clientEntryMap.set(filepath, p);
   }
 }
 
@@ -45,7 +43,7 @@ export async function renderRequest(req: Request, handler: Handler) {
   __INTERNALS.reset();
 
   // Add a script for every entry (which will be served at /_client
-  const scripts = Array.from(clientEntryMap.keys()).map((filepath) => {
+  const scripts = Array.from(clientEntryMap.values()).map((filepath) => {
     const src = path.join("/_client", filepath);
     const p = src.replace(/\.(ts|tsx|jsx)$/, ".js");
     return `<script src="${p}" type="module"></script>`;
