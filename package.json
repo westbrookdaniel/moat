@@ -1,0 +1,32 @@
+{
+  "name": "@westbrookdaniel/moat",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Server renderer and compiler for Palm",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/westbrookdaniel/moat.git"
+  },
+  "homepage": "https://github.com/westbrookdaniel/moat",
+  "type": "module",
+  "module": "index.tsx",
+  "types": "./index.d.ts",
+  "main": "./src/index.js",
+  "files": ["*"],
+  "scripts": {
+    "publish": "npm publish --access public"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0",
+    "@westbrookdaniel/palm": "^0.4.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./src/index.js"
+    }
+  }
+}
