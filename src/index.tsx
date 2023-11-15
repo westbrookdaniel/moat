@@ -42,11 +42,9 @@ export async function renderRequest(req: Request, handler: Handler) {
   let html: string = await __INTERNALS.toString(res);
   __INTERNALS.reset();
 
-  // Add a script for every entry (which will be served at /_client
-  const scripts = Array.from(clientEntryMap.values()).map((filepath) => {
-    const src = path.join("/_client", filepath);
-    const p = src.replace(/\.(ts|tsx|jsx)$/, ".js");
-    return `<script src="${p}" type="module"></script>`;
+  // Add a script for every entry
+  const scripts = Array.from(clientEntryMap.values()).map((src) => {
+    return `<script src="${src}" type="module"></script>`;
   });
 
   // Add the scripts to the end of the body
