@@ -21,15 +21,12 @@ export function register(Component: ComponentType, filepath: string) {
   const src = path.join("/_client", filepath);
   const p = src.replace(/\.(ts|tsx|jsx)$/, ".js");
 
-  if (p === "/_client/_render.js") {
-    throw new Error("Unable to register _render, it is a reserved name");
-  }
-
   if (typeof window !== "undefined") {
     render;
     Component;
+    p;
   } else {
-    clientEntryMap.set(id, p);
+    clientEntryMap.set(id, src);
   }
 }
 
