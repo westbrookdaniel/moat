@@ -26,7 +26,7 @@ export function register(Component: ComponentType, filepath: string) {
     Component;
     p;
   } else {
-    clientEntryMap.set(id, src);
+    clientEntryMap.set(id, filepath);
   }
 }
 
